@@ -121,3 +121,24 @@
   scrollbar-width: none;
   /* Firefox */
 }
+
+@keyframes drawGreenLine {
+  0% {
+      stroke-dashoffset: 750;
+  }
+  100% {
+      stroke-dashoffset: 0;
+  }
+}
+
+.red-line {
+  stroke-dasharray: 750;
+  stroke: red;
+}
+
+.green-line {
+  stroke-dasharray: 750;
+  stroke-dashoffset: 750;
+  stroke: #14e37f;
+  animation: drawGreenLine 2s ease-in-out infinite alternate;
+}

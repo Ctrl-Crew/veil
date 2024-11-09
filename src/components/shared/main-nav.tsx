@@ -31,8 +31,8 @@ export function MainNav({ items, children }: MainNavProps) {
         )}
       >
         <Image src={"/logo.svg"} height={40} width={40} alt="MB" />
-        <span className="hidden font-bold underline underline-offset-4 sm:inline-block">
-          MedBlock
+        <span className="hidden font-bold tracking-wider text-4xl sm:inline-block">
+          Veil
         </span>
       </Link>
       {items?.length ? (

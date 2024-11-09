@@ -15,7 +15,7 @@ const MetaMaskProvider: FC<MetaMaskProviderProps> = ({ children }) => {
     logging: { developerMode: false },
     checkInstallationImmediately: false,
     dappMetadata: {
-      name: "MedBlock",
+      name: "Veil",
       url: host,
     },
   }
