@@ -30,7 +30,7 @@ import {
 interface PrescriptionCardProps extends React.HTMLAttributes<HTMLDivElement> {
   prescription: Omit<
     Prescription & { medications: Medication[] } & {
-      doctor: { id: number; user: { name: string | null } }
+      doctor: { id: string; user: { name: string | null } }
     },
     "doctorId" | "patientId"
   >

@@ -40,7 +40,7 @@ export default async function PrescriptionsPage() {
   })
   if (role?.role != "patient") return redirect("/dashboard")
 
-  const data = await db.patient.findUnique({
+  const data = await db.patient.findFirst({
     where: {
       userId: user.id,
     },
@@ -70,7 +70,7 @@ export default async function PrescriptionsPage() {
     data?.prescriptions ||
     ([] as Omit<
       Prescription & { medications: Medication[] } & {
-        doctor: { id: number; user: { name: string | null } }
+        doctor: { id: string; user: { name: string | null } }
       },
       "doctorId" | "patientId"
     >[])
@@ -100,7 +100,7 @@ export default async function PrescriptionsPage() {
       },
     ],
     doctor: {
-      id: 1,
+      id: "1",
       user: {
         name: "John Doe",
       },
