@@ -136,6 +136,8 @@ export default function DoctorProfile() {
     }
   }
 
+  
+
   return (
     <div className={`min-h-screen ${isDarkMode ? "dark" : ""}`}>
       <div className="container mx-auto space-y-6 bg-background p-6 text-foreground transition-colors duration-300">
