@@ -43,11 +43,11 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "Med Block",
-      url: "https://Med Block.com",
+      name: "Veil",
+      url: "https://Veil.com",
     },
   ],
-  creator: "Med Block",
+  creator: "Veil",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [`${siteConfig.url}/og.jpg`],
-    creator: "@Med Block",
+    creator: "@Veil",
   },
   icons: {
     icon: "/favicon.ico",

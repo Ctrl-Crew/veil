@@ -167,7 +167,7 @@ export default function AppointmentBookingPage() {
                 <Badge variant="outline" className="mt-2">
                   {doctor.specialty}
                 </Badge>
-                <Button className="absolute right-5 bottom-5" onClick={(e) => {e.currentTarget.innerText = "Pending";e.currentTarget.classList.add("border","border-yellow-200")}}>
+                <Button className="absolute right-5 bottom-5" onClick={(e) => {e.currentTarget.innerText = "Pending";e.currentTarget.classList.add("bg-yellow-500")}}>
                   Book Appointment now
                 </Button>
               </CardContent>
