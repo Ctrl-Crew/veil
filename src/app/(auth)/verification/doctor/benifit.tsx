@@ -44,7 +44,7 @@ export default function DoctorFeaturesSection() {
   const [converted, setConverted] = useState("0")
 
   return (
-    <section className="size-full bg-gray-900 py-12 md:py-24 lg:py-32">
+    <section className="size-full bg-gray-900 py-12 md:py-24">
       <div className="container px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

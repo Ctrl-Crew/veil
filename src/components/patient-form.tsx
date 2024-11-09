@@ -248,7 +248,7 @@ export function PatientForm({ ...props }: PatientFormProps) {
               <FormLabel>Chronic Diseases</FormLabel>
               <FormControl>
                 <InputTags
-                  placeholder="write didease name and press add"
+                  placeholder="write disease(s) name and press add"
                   {...field}
                 />
               </FormControl>

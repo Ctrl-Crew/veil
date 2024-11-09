@@ -57,7 +57,7 @@ export default function RegistrationOptionsSection() {
         </motion.div>
 
         <Tabs defaultValue="patient" className="mx-auto w-full max-w-4xl">
-          <TabsList className="mb-12 grid w-full grid-cols-2">
+          <TabsList className="mb-12 grid w-full grid-cols-2 bg-blue-700/20">
             <TabsTrigger value="patient">Register as Patient</TabsTrigger>
             <TabsTrigger value="doctor">Register as Doctor</TabsTrigger>
           </TabsList>

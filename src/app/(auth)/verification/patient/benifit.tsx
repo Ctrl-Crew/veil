@@ -13,7 +13,7 @@ export default function PatientFeaturesSection() {
   const [symptom, setSymptom] = useState("")
 
   return (
-    <section className="min-h-screen w-full bg-[#0f172a] py-12 md:py-24 lg:py-32">
+    <section className="min-h-screen w-full bg-[#0f172a] py-12 md:py-24">
       <div className="container px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

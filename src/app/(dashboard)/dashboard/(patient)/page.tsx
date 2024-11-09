@@ -33,13 +33,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { DashboardHeader } from "@/components/header"
 import { Icons } from "@/components/icons"
 import { DashboardShell } from "@/components/shell"
+import { getCurrentUser } from "@/lib/session"
+import { notFound, redirect } from "next/navigation"
+import { db } from "@/lib/db"
+import { MedicalContract } from "@/components/contract"
 
 // Mock patient data (replace with actual data fetching logic)
 const patientData = {
   id: 1,
   userId: "user123",
-  name: "Rohan Sen",
-  email: "rohansen856@gmail.com",
+  name: "Om Thorat",
+  email: "thoratom1104@gmail.com",
   image: "/logo.svg",
   gender: "Male",
   dateOfBirth: new Date("2004-10-26"),
@@ -93,9 +97,11 @@ const patientBenefits = [
 ]
 
 export default function PatientProfile() {
+
+
   const [appointments, setAppointments] = useState<any[]>([])
   const [prescriptions, setPrescriptions] = useState<any[]>([])
-  const [balance, setBalance] = useState(patientData.balance)
+  const [balance, setBalance] = useState(100)
   const [topUpAmount, setTopUpAmount] = useState("")
 
   useEffect(() => {
@@ -158,20 +164,20 @@ export default function PatientProfile() {
                     >
                       <Avatar className="size-20">
                         <AvatarImage
-                          src={patientData.image}
-                          alt={patientData.name}
+                          src={patientData?.image}
+                          alt={patientData?.name}
                         />
                         <AvatarFallback>
-                          {patientData.name.charAt(0)}
+                          {patientData?.name.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
                     </motion.div>
                     <div>
                       <CardTitle className="text-2xl">
-                        {patientData.name}
+                        {patientData?.name}
                       </CardTitle>
                       <CardDescription>
-                        Patient ID: {patientData.id}
+                        Patient ID: {patientData?.id}
                       </CardDescription>
                     </div>
                   </CardHeader>
@@ -181,35 +187,35 @@ export default function PatientProfile() {
                         <User className="text-blue-500 dark:text-blue-400" />
                       }
                       label="Gender"
-                      value={patientData.gender}
+                      value={patientData?.gender}
                     />
                     <InfoItem
                       icon={
                         <Mail className="text-green-500 dark:text-green-400" />
                       }
                       label="Email"
-                      value={patientData.email}
+                      value={patientData?.email}
                     />
                     <InfoItem
                       icon={
                         <Droplet className="text-red-500 dark:text-red-400" />
                       }
                       label="Blood Type"
-                      value={patientData.bloodType}
+                      value={patientData?.bloodType}
                     />
                     <InfoItem
                       icon={
                         <Phone className="text-yellow-500 dark:text-yellow-400" />
                       }
                       label="Emergency Contact"
-                      value={patientData.emergencyContact}
+                      value={patientData?.emergencyContact}
                     />
                     <div>
                       <h3 className="mb-2 text-lg font-semibold">
                         Chronic Diseases
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {patientData.chronicDiseases.map((disease, index) => (
+                        {patientData?.chronicDiseases.map((disease, index) => (
                           <motion.div
                             key={index}
                             whileHover={{ scale: 1.05 }}

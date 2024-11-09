@@ -212,7 +212,7 @@ export function DashboardSidebar({ ...props }: DashboardSidebar) {
                   <Icons.logo />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">Med Bloock</span>
+                  <span className="truncate font-semibold">Veil</span>
                   <span className="truncate text-xs">Enterprise</span>
                 </div>
               </a>

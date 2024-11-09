@@ -46,7 +46,7 @@ export const Icons = {
       {...props}
     >
 
-      <g clip-path="url(#clip0_3_23)">
+      <g clipPath="url(#clip0_3_23)">
       <svg viewBox="0 0 100 20" className="w-full h-full">
                     <polyline
                     fill="none"
