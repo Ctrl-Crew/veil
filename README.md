@@ -204,6 +204,10 @@ Distributed under the MIT License. See `LICENSE` for more information.
   Visit the live version of the website deployed on Vercel.
 
 
+## Other related repos:-
+https://github.com/Ctrl-Crew/veil-contracts
+https://github.com/Ctrl-Crew/veil-py
+https://github.com/Ctrl-Crew/veil-application
 
 
 
