@@ -59,7 +59,7 @@ export default function AppDownloadSection() {
           >
             <div className="relative aspect-[9/16] w-full max-w-screen-xs">
               <Image
-                src="/placeholder.svg?height=600&width=400"
+                src="/veil_application.jpeg"
                 alt="App Screenshot"
                 layout="fill"
                 objectFit="cover"
