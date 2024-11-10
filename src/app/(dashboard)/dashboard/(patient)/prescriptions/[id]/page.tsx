@@ -23,8 +23,8 @@ import { Icons } from "@/components/icons"
 
 const prescriptionData: Prescription & { medications: Medication[] } = {
   id: "123e4567-e89b-12d3-a456-426614174000",
-  doctorId: 1,
-  patientId: 2,
+  doctorId: "1",
+  patientId: "2",
   issueDate: new Date(),
   validTill: new Date(),
   medications: [

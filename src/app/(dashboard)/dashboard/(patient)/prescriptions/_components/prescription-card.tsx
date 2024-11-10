@@ -100,7 +100,8 @@ export function PrescriptionCard({
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <QRCodeSVG
-                      value={`${siteConfig.url}/prescriptions/${prescription.id}`}
+                      // value={`${siteConfig.url}/prescriptions/${prescription.id}`}
+                      value={"http://192.168.26.214:3333/meds"}
                       size={64}
                       bgColor="transparent"
                       fgColor={colorScheme.text.replace("text-", "#")}
