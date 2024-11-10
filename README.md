@@ -1,7 +1,5 @@
  # Decentralized Clinic App
 
-**[Overview](#)** | **[Documentation](#)** | **[Whitepaper](#)** | **[Community](#)** | **[Contact Us](#)**
-
 ## Overview
 The Decentralized Clinic App is a Web3 platform designed to connect patients and doctors while ensuring privacy, security, and transparency through the power of blockchain technology. The app offers decentralized identity management, secure and immutable prescriptions, AI-powered doctor searches, and more, all facilitated using our custom **HTK token**. The goal is to revolutionize the healthcare space by offering trustless, transparent interactions between patients and healthcare professionals.
 
@@ -34,7 +32,7 @@ In essence, our platform is a holistic solution that not only addresses the key 
 - **Doctors** seeking a transparent and secure method for managing their practices and interacting with patients.
 - **Web3 enthusiasts** interested in decentralized applications (dApps) and healthcare innovations.
 - **Healthcare providers** in regions lacking efficient, secure, or transparent healthcare systems.
-- **Anyone in genral** who wishes to keep their identity and profile secret from their healthcare providers.
+- **Anyone in genral** who wishes to keep their identity and profile secret from their healthcare providers due to personal reasons or termianl illnesses.
 
 
 ## Why Blockchain?
@@ -83,6 +81,94 @@ The app integrates **AI-driven search** capabilities, allowing patients to find 
 - **Tokenized Payments**: Efficient, low-cost, and transparent payments through **HTK tokens**, providing a seamless experience for both patients and doctors.
 - **AI-Enhanced Healthcare**: The integration of **AI** for doctor recommendations and disease insights offers personalized and accessible healthcare information.
 
+
+# **Project Setup**
+
+ **PostgreSQL** and **MongoDB** databases. The services are managed using **Docker** and **Docker Compose**.
+
+## **Prerequisites**
+Before starting, ensure that you have the following installed:
+
+- **Docker** (Follow the installation steps below if Docker is not installed on your system)
+- **Docker Compose** (Comes with Docker Desktop for Windows/Mac. If you're on Linux, you may need to install it separately.)
+
+### **Installing Docker**
+
+#### **On macOS**
+1. **Download Docker for Mac**:
+   - Go to [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop) and download the `.dmg` file.
+   - Once downloaded, open the `.dmg` file and drag the Docker icon to the Applications folder.
+2. **Install Docker**:
+   - Open Docker from your Applications folder.
+3. **Verify Installation**:
+   - Open your terminal and run:
+     ```bash
+     docker --version
+     ```
+   - This will show the installed version of Docker.
+
+#### **On Windows**
+1. **Download Docker for Windows**:
+   - Go to [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop) and download the installer.
+2. **Install Docker**:
+   - Run the installer and follow the on-screen instructions.
+   - You may need to enable WSL 2 during installation.
+3. **Verify Installation**:
+   - Open PowerShell or Command Prompt and run:
+     ```bash
+     docker --version
+     ```
+
+#### **On Linux (Ubuntu/Debian)**
+1. **Install Docker**:
+   - Open your terminal and run:
+     ```bash
+     sudo apt update
+     sudo apt install docker.io
+     ```
+2. **Enable Docker**:
+   ```bash
+   sudo systemctl enable --now docker
+   ```
+
+**Running the Services**
+```bash
+docker-compose up -d
+docker ps
+```
+
+
+**Setup the env file in correspondence to the env.example file**
+
+```bash
+# -----------------------------------------------------------------------------
+# App
+# -----------------------------------------------------------------------------
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+
+# -----------------------------------------------------------------------------
+# Authentication (NextAuth.js)
+# -----------------------------------------------------------------------------
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET=""
+
+# -----------------------------------------------------------------------------
+# Database (MySQL - PlanetScale)
+# -----------------------------------------------------------------------------
+DATABASE_URL=""
+MONGODB_URI=""
+
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+
+# -----------------------------------------------------------------------------
+# Blockchain (Contract Addresses)
+# -----------------------------------------------------------------------------
+NEXT_PUBLIC_TOKEN_ADDRESS=""
+NEXT_PUBLIC_CONTRACT_ADDRESS=""
+```
+
+
 ## Roadmap
 ### **Next 6 Months**
 - Complete smart contract deployment and refine tokenomics for better user interaction.
@@ -104,6 +190,24 @@ While there are other blockchain-based healthcare platforms, such as **Healthere
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
+
+
+## **Important Links**
+
+- **[Figma Presentation for HackCBS 7.0](https://www.figma.com/slides/6R8Dy1DpnUKosdyRD4Up4k/Veil?node-id=27-132&t=7Q7hTDepLgxEgiD4-1)**  
+  Explore the design and user flow of the project on Figma.
+
+- **[YouTube Video Link for the Website Walkthrough](https://www.youtube.com/watch?v=xJlMnI3p9v4)**  
+  Watch the walkthrough of the website's features and functionality.
+
+- **[Live Deployment Link](https://veil-org.vercel.app/)**  
+  Visit the live version of the website deployed on Vercel.
+
+
+
+
+
+
 
 ## Contact
 For support or inquiries, please contact us at [](ritankar.saha786@gmail.com).
