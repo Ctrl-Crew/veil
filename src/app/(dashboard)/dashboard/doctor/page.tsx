@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import {
-  ChevronsUpDown,
   Clock,
   DollarSign,
   Droplet,
@@ -25,23 +24,22 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import AskAcess from "@/components/askacess"
 import { DashboardHeader } from "@/components/header"
 import { Icons } from "@/components/icons"
 import { DashboardShell } from "@/components/shell"
+import { getCurrentUser } from "@/lib/session"
+import { notFound, redirect } from "next/navigation"
+import { db } from "@/lib/db"
+import { MedicalContract } from "@/components/contract"
 
-// Mock patient data (replace with actual data fetching logic)
-const patientData = {
+// Mock doctor data (replace with actual data fetching logic)
+const doctorData = {
   id: 1,
   userId: "user123",
   name: "Om Thorat",
@@ -78,8 +76,8 @@ const connectedDoctors = [
   },
 ]
 
-// Patient benefits data
-const patientBenefits = [
+// doctor benefits data
+const doctorBenefits = [
   {
     icon: <Heart className="size-6 text-red-500" />,
     title: "24/7 Care",
@@ -98,8 +96,9 @@ const patientBenefits = [
   },
 ]
 
-export default function PatientProfile() {
-  const [isOpen, setIsOpen] = useState(false)
+export default function doctorProfile() {
+
+
   const [appointments, setAppointments] = useState<any[]>([])
   const [prescriptions, setPrescriptions] = useState<any[]>([])
   const [balance, setBalance] = useState(100)
@@ -141,7 +140,7 @@ export default function PatientProfile() {
   return (
     <DashboardShell>
       <DashboardHeader
-        heading="Patient Profile"
+        heading="doctor Profile"
         text="See all things related to you"
       />
 
@@ -153,26 +152,7 @@ export default function PatientProfile() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Collapsible
-                open={isOpen}
-                onOpenChange={setIsOpen}
-                className="w-full space-y-2"
-              >
-                <div className="flex items-center justify-between space-x-4 px-4">
-                  <h4 className="text-sm font-semibold">Notifications</h4>
-                  <CollapsibleTrigger asChild>
-                    <Button variant="ghost" size="sm" className="w-9 p-0">
-                      <ChevronsUpDown className="h-4 w-4" />
-                      <span className="sr-only">Toggle</span>
-                    </Button>
-                  </CollapsibleTrigger>
-                </div>
-                <CollapsibleContent className="space-y-2">
-                  <AskAcess />
-                </CollapsibleContent>
-              </Collapsible>
-
-              <Card className="relative flex justify-between mt-5">
+              <Card className="relative flex justify-between">
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                   <Icons.logo className="size-2/3 opacity-20 duration-300 hover:animate-pulse" />
                 </div>
@@ -184,20 +164,20 @@ export default function PatientProfile() {
                     >
                       <Avatar className="size-20">
                         <AvatarImage
-                          src={patientData?.image}
-                          alt={patientData?.name}
+                          src={doctorData?.image}
+                          alt={doctorData?.name}
                         />
                         <AvatarFallback>
-                          {patientData?.name.charAt(0)}
+                          {doctorData?.name.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
                     </motion.div>
                     <div>
                       <CardTitle className="text-2xl">
-                        {patientData?.name}
+                        {doctorData?.name}
                       </CardTitle>
                       <CardDescription>
-                        Patient ID: {patientData?.id}
+                        doctor ID: {doctorData?.id}
                       </CardDescription>
                     </div>
                   </CardHeader>
@@ -207,35 +187,35 @@ export default function PatientProfile() {
                         <User className="text-blue-500 dark:text-blue-400" />
                       }
                       label="Gender"
-                      value={patientData?.gender}
+                      value={doctorData?.gender}
                     />
                     <InfoItem
                       icon={
                         <Mail className="text-green-500 dark:text-green-400" />
                       }
                       label="Email"
-                      value={patientData?.email}
+                      value={doctorData?.email}
                     />
                     <InfoItem
                       icon={
                         <Droplet className="text-red-500 dark:text-red-400" />
                       }
                       label="Blood Type"
-                      value={patientData?.bloodType}
+                      value={doctorData?.bloodType}
                     />
                     <InfoItem
                       icon={
                         <Phone className="text-yellow-500 dark:text-yellow-400" />
                       }
                       label="Emergency Contact"
-                      value={patientData?.emergencyContact}
+                      value={doctorData?.emergencyContact}
                     />
                     <div>
                       <h3 className="mb-2 text-lg font-semibold">
                         Chronic Diseases
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {patientData?.chronicDiseases.map((disease, index) => (
+                        {doctorData?.chronicDiseases.map((disease, index) => (
                           <motion.div
                             key={index}
                             whileHover={{ scale: 1.05 }}
@@ -254,7 +234,7 @@ export default function PatientProfile() {
                   </CardContent>
                 </div>
                 <Image
-                  src="/illustrations/patient-1.svg"
+                  src="/illustrations/doctor-1.svg"
                   alt="Health Journey Visualization"
                   width={400}
                   height={300}
@@ -271,11 +251,11 @@ export default function PatientProfile() {
           >
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl">Patient Benefits</CardTitle>
+                <CardTitle className="text-xl">doctor Benefits</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid gap-4 md:grid-cols-3">
-                  {patientBenefits.map((benefit, index) => (
+                  {doctorBenefits.map((benefit, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}

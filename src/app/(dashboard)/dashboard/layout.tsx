@@ -11,6 +11,7 @@ import { DashboardNav } from "@/components/shared/nav"
 import { SiteFooter } from "@/components/shared/site-footer"
 import { DashboardSidebar } from "@/components/sidebar"
 import { UserAccountNav } from "@/components/user-account-nav"
+import { Toaster } from "@/components/ui/sonner"
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
@@ -42,6 +43,7 @@ export default async function DashboardLayout({
     <SidebarProvider>
       <DashboardSidebar user={user as User} />
       <div className="w-full bg-background">
+        <Toaster />
         <header className="flex h-16 items-center justify-between border-b p-4 pr-12 lg:pr-24">
           <div className="flex items-center gap-4">
             <SidebarTrigger />
